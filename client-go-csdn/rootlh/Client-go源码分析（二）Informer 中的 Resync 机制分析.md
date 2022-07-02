@@ -1,1 +1,3 @@
 https://blog.csdn.net/qq_17305249/article/details/107890063?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165511319116782184662231%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=165511319116782184662231&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-4-107890063-null-null.nonecase&utm_term=Client-go%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90&spm=1018.2226.3001.4450
+
+Resync 机制的引入，定时将 Indexer 缓存事件重新同步到 Delta FIFO 队列中，在处理 SharedInformer 事件回调时，让处理失败的事件得到重新处理。并且通过入队前判断 FIFO 队列中是否已经有了更新版本的 event，来决定是否丢弃 Indexer 缓存不进行 Resync 入队。在处理 Delta FIFO 队列中的 Resync 的事件数据时，触发 onUpdate 回调来让事件重新处理。

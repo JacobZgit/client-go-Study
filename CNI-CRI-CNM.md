@@ -1,1 +1,0 @@
-k8s网络学习（3）——网络模型&&CNI&&CNM：http://niyanchun.com/k8s-network-3.html
